@@ -1,44 +1,39 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Project to demonstrate storybook error with flow
 
-In the project directory, you can run:
+### Try it
 
-### `npm start`
+- `git clone git@github.com:maikthomas/storybook-flow-optional-spread-type-error.git`
+- `cd storybook-flow-optional-spread-type-error`
+- `npm i`
+- `npm run start`
+  Observe the app working, can see `OptionalSpreadTyped` component rendered in React dev tools.
+  cancel with Ctrl+C and try
+- `npm run storybook`
+  Observe error:
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+ERROR in ./src/optional-spread-type.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+TypeError: Property elements[0] of ArrayExpression expected node to be of a type ["null","Expression","SpreadElement"] but instead got undefined
+    at validate (/spread-type-test/node_modules/@babel/types/lib/definitions/utils.js:148:13)
+    at validator (/spread-type-test/node_modules/@babel/types/lib/definitions/utils.js:97:7)
+    at Object.validate (/spread-type-test/node_modules/@babel/types/lib/definitions/utils.js:172:7)
+    at validate (/spread-type-test/node_modules/@babel/types/lib/validators/validate.js:17:9)
+    at builder (/spread-type-test/node_modules/@babel/types/lib/builders/builder.js:46:27)
+    at Object.ArrayExpression (/spread-type-test/node_modules/@babel/types/lib/builders/generated/index.js:232:31)
+    at buildObjectExpression (/spread-type-test/node_modules/babel-plugin-react-docgen/lib/index.js:123:14)
+    at buildObjectExpression (/spread-type-test/node_modules/babel-plugin-react-docgen/lib/index.js:108:60)
+    at /spread-type-test/node_modules/babel-plugin-react-docgen/lib/index.js:81:19
+    at Array.forEach (<anonymous>)
+    at injectReactDocgenInfo (/spread-type-test/node_modules/babel-plugin-react-docgen/lib/index.js:73:17)
+    at PluginPass.exit (/spread-type-test/node_modules/babel-plugin-react-docgen/lib/index.js:42:11)
+    at newFn (/spread-type-test/node_modules/@babel/traverse/lib/visitors.js:193:21)
+    at NodePath._call (/spread-type-test/node_modules/@babel/traverse/lib/path/context.js:53:20)
+    at NodePath.call (/spread-type-test/node_modules/@babel/traverse/lib/path/context.js:40:17)
+    at NodePath.visit (/spread-type-test/node_modules/@babel/traverse/lib/path/context.js:97:8)
+ @ ./src/stories/index.js 6:0-57 13:29-47
+ @ ./.storybook/config.js
+ @ multi ./node_modules/@storybook/core/dist/server/config/polyfills.js ./node_modules/@storybook/core/dist/server/config/globals.js ./.storybook/config.js ./node_modules/webpack-hot-middleware/client.js?reload=true
+```
